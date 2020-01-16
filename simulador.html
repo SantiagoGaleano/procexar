@@ -90,6 +90,7 @@
                                     <li><a href="index.html#modeloNegocio">Modelo de negocio</a></li>
                                     <li><a href="contact.html">Simula tu crédito</a></li>
                                     <li><a href="contact.html">Contáctenos</a></li>
+                                    <li><a href="trabaja.html">Trabaja con Nosotros</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -135,7 +136,7 @@
                 <div class="form-group row">
                   <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="monto" name="monto" required >
+                    <input onkeyup="format(this)" onchange="format(this)" type="text" class="form-control" id="monto" name="monto" required >
                   </div>
                 </div>
                 <div class="form-group row">
@@ -145,12 +146,22 @@
                   </div>
                 </div>
                 <p> Número de meses: <span id="demo"></span></p>
-
-                <div class="form-group row">
-                    <label  class="col-sm-4 col-form-label">Ingrese la tasa  de interes</label>
+                <p>Interés del prestamo</p>
+                <div class="form-group row dropdown">
+                    
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Seleccione el tipo de interés 
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Efectiva Anual</a>
+                          <a class="dropdown-item" href="#">Mensual</a>
+                          <a class="dropdown-item" href="#">Nominal anual</a>
+                    </div>
+                      
+                    
                     <div class="col-sm-7">
                       <input type="text" class="form-control" id="tasa" required >
-                      <p>%</p>
+                      
                       </div>
                 </div>
 
@@ -177,41 +188,52 @@
       <script>
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
-        var monto = document.getElementById("monto");
         var tasa = document.getElementById("tasa");
         var calcular = document.getElementById("calcular");
         var montoo = document.getElementsByName("monto");
         var valorCuota = document.getElementById("cuota");
         output.innerHTML = slider.value;
-        
+        var num;
         slider.oninput = function() {
           output.innerHTML = this.value;
         }
+
+        function format(input){
+            num = input.value.replace(/\./g,'');
+            if(!isNaN(num)){
+                num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                num = num.split('').reverse().join('').replace(/^[\.]/,'');
+                input.value = num;
+            }
+        }
         
         function myFunction() {
+            var monto = document.getElementById("monto");
+            console.log(monto);
+
             if(tasa.value.length==0 || monto.value.length==0){
                 alert('Falta información');
 
             }
-            if(isNaN(parseInt(monto.value))){
-                alert('Los campos deben ser numericos');
-            }
-
+            
+            
             if(isNaN(parseInt(tasa.value))){
                 alert('Los campos deben ser numericos');
             }
+            console.log('la tasa es '+ tasa.value);
 
-            tasaMensual =  tasa.value / 100;
-            cuotaMensual = monto.value / slider.value;
-            interes = monto.value * tasaMensual;
-            total = cuotaMensual + interes
+            tasaMensual =  (tasa.value / 12)/100;
 
-            cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.total);
+            console.log(tasaMensual);
+            var prueba = tasaMensual
+            cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
+            console.log('sosos' + cuotaMensual);
+            
+            
 
-        console.log(tasaMensual);
-        console.log(cuotaMensual);
-        console.log(interes);
-        console.log(total);
+            cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
+
+            
         }
 
        

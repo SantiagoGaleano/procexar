@@ -408,7 +408,7 @@ img {
       .header-area .top-header-area .top-contact-info a {
         display: inline-block;
         color: #838383;
-        font-size: 14px;
+        font-size: 12px;
         margin-bottom: 0;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -456,14 +456,14 @@ img {
       .header-area .credit-main-menu .classy-navbar .classynav ul li a {
         font-weight: 600;
         text-transform: capitalize;
-        font-size: 15px;
-        padding: 0 15px;
+        font-size: 14px;
+        padding: 0 10px;
         color: #ffffff; }
         .header-area .credit-main-menu .classy-navbar .classynav ul li a:hover, .header-area .credit-main-menu .classy-navbar .classynav ul li a:focus {
           color: #ffbb38; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
           .header-area .credit-main-menu .classy-navbar .classynav ul li a {
-            font-size: 14px; } }
+            font-size: 12px; } }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
           .header-area .credit-main-menu .classy-navbar .classynav ul li a {
             color: #003679; } }
@@ -505,6 +505,7 @@ img {
           content: '';
           position: absolute;
           top: 42%;
+         
           left: 0;
           z-index: -1;
           background-color: #ffbb38;
@@ -521,7 +522,7 @@ img {
           background-color: #ffbb38; }
         .header-area .credit-main-menu .classy-navbar .contact a {
           display: inline-block;
-          font-size: 24px;
+          font-size: 16px;
           color: #003679;
           font-weight: 700;
           line-height: 85px; }
