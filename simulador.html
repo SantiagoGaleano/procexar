@@ -135,46 +135,42 @@
            
                 <div class="form-group row">
                   <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
-                  <div class="col-sm-8">
-                    <input onkeyup="format(this)" onchange="format(this)" type="text" class="form-control" id="monto" name="monto" required >
+                  <div class="col-sm-7">
+                    <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
-                  <div class="col-sm-8">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                  </div>
-                </div>
-                <p> Número de meses: <span id="demo"></span></p>
                 <p>Interés del prestamo</p>
-                <div class="form-group row dropdown">
+                <div class="form-group row ">
                     
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Seleccione el tipo de interés 
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Efectiva Anual</a>
-                          <a class="dropdown-item" href="#">Mensual</a>
-                          <a class="dropdown-item" href="#">Nominal anual</a>
+                    <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
+                        <option value="mensual" >Mensual</option>
+                        <option value="anual">Efectivo Anual</option>
+                        
+                    </select>
+                      
+                     <div class="col-sm-7">
+                      <input  type="text" class="form-control" id="tasa" required >
+                      
                     </div>
-                      
-                    
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="tasa" required >
-                      
-                      </div>
+                    <p>%</p>
                 </div>
 
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
+                    <div class="col-sm-7">
+                      <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
+                    </div>
+                </div>
+                  <p> Número de meses: <span id="demo"></span></p>
+                 
                 <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
                     <label  class="col-sm-4 col-form-label">Cuota Mensual</label>
                     <div class="col-sm-7">
                       <span id="cuota"></span>
-                      
-                      </div>
+                    </div>
                 </div>
 
-                              
-               
+                                           
                 <div class="form-group row">
                   <div class="col-sm-10">
                     <button onclick="myFunction()" class="btn btn-primary">Calcular</button>
@@ -192,11 +188,20 @@
         var calcular = document.getElementById("calcular");
         var montoo = document.getElementsByName("monto");
         var valorCuota = document.getElementById("cuota");
+
         output.innerHTML = slider.value;
         var num;
         slider.oninput = function() {
           output.innerHTML = this.value;
         }
+
+        function selectTasa() {
+            var tipoTasa = document.getElementById("interesPrestamo").value;
+            console.log('la tasa es', tipoTasa);
+            return tipoTasa;
+         
+        }
+        
 
         function format(input){
             num = input.value.replace(/\./g,'');
@@ -206,33 +211,43 @@
                 input.value = num;
             }
         }
+
         
         function myFunction() {
+            
             var monto = document.getElementById("monto");
             console.log(monto);
+
+            if (selectTasa() == 'mensual'){
+            console.log('prueba select tas');
+
+            tasaMensual =  tasa.value / 100;
+            cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
+            console.log('sosos' + cuotaMensual);
+                        
+            cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
+
+            } else if(selectTasa() == 'anual'){
+                tasaMensual = (( Math.pow((1 + tasa.value/100),(1/12))-1));
+                console.log(tasaMensual);
+                cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
+                cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
+
+            }
+
 
             if(tasa.value.length==0 || monto.value.length==0){
                 alert('Falta información');
 
             }
             
-            
             if(isNaN(parseInt(tasa.value))){
                 alert('Los campos deben ser numericos');
             }
+            
             console.log('la tasa es '+ tasa.value);
 
-            tasaMensual =  (tasa.value / 12)/100;
-
-            console.log(tasaMensual);
-            var prueba = tasaMensual
-            cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
-            console.log('sosos' + cuotaMensual);
             
-            
-
-            cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
-
             
         }
 
