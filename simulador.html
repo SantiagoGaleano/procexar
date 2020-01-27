@@ -127,59 +127,129 @@
     </section>
     <!-- ##### Breadcrumb Area End ##### -->
 
-    <div class="containerSimulador">
-        <h3 style="text-align: center;">Simula tu crédito</h3>
 
-        <div>
 
-           
-                <div class="form-group row">
-                  <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
-                  <div class="col-sm-7">
-                    <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
-                  </div>
-                </div>
-                <p>Interés del prestamo</p>
-                <div class="form-group row ">
-                    
-                    <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
-                        <option value="mensual" >Mensual</option>
-                        <option value="anual">Efectivo Anual</option>
-                        
-                    </select>
-                      
-                     <div class="col-sm-7">
-                      <input  type="text" class="form-control" id="tasa" required >
-                      
-                    </div>
-                    <p>%</p>
-                </div>
-
-                <div class="form-group row">
-                    <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
-                    <div class="col-sm-7">
-                      <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
-                    </div>
-                </div>
-                  <p> Número de meses: <span id="demo"></span></p>
-                 
-                <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
-                    <label  class="col-sm-4 col-form-label">Cuota Mensual</label>
-                    <div class="col-sm-7">
-                      <span id="cuota"></span>
-                    </div>
-                </div>
-
-                                           
-                <div class="form-group row">
-                  <div class="col-sm-10">
-                    <button onclick="myFunction()" class="btn btn-primary">Calcular</button>
-                  </div>
-                </div>
-            
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img  class="imgHipotecario " src="img/casa.png" alt="">
+            </div>
+            <div class="col-sm-6">
+                <img  class="imgHipotecario " src="img/cash.png" alt="">
+            </div>
         </div>
-  
-      </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="containerSimulador">
+                    <h3 style="text-align: center;">Crédito Hipotecario</h3>
+            
+                    <div>
+                                   
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
+                        <div class="col-sm-7">
+                            <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
+                        </div>
+                            </div>
+                            <p>Interés del prestamo</p>
+                            <div class="form-group row ">
+                                <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
+                                    <option value="mensual" >Mensual</option>
+                                    <option value="anual">Efectivo Anual</option>
+                                    
+                                </select>
+                                  
+                                 <div class="col-sm-7">
+                                    <input  type="text" class="form-control" id="tasa" required >
+                                  
+                                </div>
+                                <p>%</p>
+                            </div>
+            
+                            <div class="form-group row">
+                                <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
+                                <div class="col-sm-7">
+                                  <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
+                                </div>
+                            </div>
+                              <p> Número de meses: <span id="demo"></span></p>
+                             
+                            <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
+                                <label  class="col-sm-4 col-form-label">Cuota calculada sin seguro aproximada simple</label>
+                                <div class="col-sm-7">
+                                  <span id="cuota"></span>
+                                </div>
+                            </div>
+            
+                                                       
+                            <div class="form-group row">
+                              <div class="col-sm-10">
+                                <button onclick="myFunction()" class="btn btn-primary">Calcular</button>
+                              </div>
+                            </div>
+                        
+                    </div>
+              
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="containerSimulador">
+                    <h3 style="text-align: center;">Crédito Libranza</h3>
+            
+                    <div>
+                                   
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
+                        <div class="col-sm-7">
+                            <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
+                        </div>
+                            </div>
+                            <p>Interés del prestamo</p>
+                            <div class="form-group row ">
+                                <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
+                                    <option value="mensual" >Mensual</option>
+                                    <option value="anual">Efectivo Anual</option>
+                                    
+                                </select>
+                                  
+                                 <div class="col-sm-7">
+                                    <input  type="text" class="form-control" id="tasa" required >
+                                  
+                                </div>
+                                <p>%</p>
+                            </div>
+            
+                            <div class="form-group row">
+                                <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
+                                <div class="col-sm-7">
+                                  <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
+                                </div>
+                            </div>
+                              <p> Número de meses: <span id="demo"></span></p>
+                             
+                            <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
+                                <label  class="col-sm-4 col-form-label">Cuota calculada sin seguro aproximada simple</label>
+                                <div class="col-sm-7">
+                                  <span id="cuota"></span>
+                                </div>
+                            </div>
+            
+                                                       
+                            <div class="form-group row">
+                              <div class="col-sm-10">
+                                <button onclick="myFunction()" class="btn btn-primary">Calcular</button>
+                              </div>
+                            </div>
+                        
+                    </div>
+              
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 
       <script>
         var slider = document.getElementById("myRange");
