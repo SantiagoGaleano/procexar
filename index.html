@@ -112,7 +112,7 @@
                             <div class="welcome-text text-center">
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Procexar</h6>
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Comienza Tu <span>proceso</span> ahora</h2>
-                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Ver mas</a>
+                                <a href="#" class="btn credit-btn mt-50" data-toggle="modal" data-target="#proceso" data-animation="fadeInUp" data-delay="700ms">Ver mas</a>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <div class="welcome-text text-center">
                                 <h6 data-animation="fadeInDown" data-delay="100ms">Procexar </h6>
                                 <h2 data-animation="fadeInDown" data-delay="300ms">Referidos </h2>
-                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInDown" data-delay="700ms">Ver mas</a>
+                                <a href="#" class="btn credit-btn mt-50" data-toggle="modal" data-target="#referidos" data-animation="fadeInDown" data-delay="700ms">Ver mas</a>
                             </div>
                         </div>
                     </div>
@@ -185,6 +185,70 @@
 
         </div>
     </div>
+
+    <!--Ventanas Modales-->
+
+    <div class="modal fade" id="referidos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 style="text-align: center;" >Referidos</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                   
+                    <div class="form-group row">
+                      <label for="colFormLabel" class="col-sm-2 col-form-label">Código</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Código">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Cédula</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Cédula">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tipo de crédito</label>
+                        <select style="margin-left: 14px;"  onchange="selectTasa()" class="custom-select col-sm-9" id="interesPrestamo" required>
+                            <option value="mensual" >Hipotecario</option>
+                            <option value="anual">Compra de cartera hipotecaria </option>
+                            <option value="anual"> Leasing </option>
+                            <option value="anual"> Remodelación </option>
+
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Valor</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
+                        </div>
+                    </div>
+  
+                   
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     <!-- ##### Hero Area End ##### -->
     
     <!-- ##### Features Area Start ###### -->
@@ -320,7 +384,7 @@
                             <h5>Recursos claves</h5>
                             <ol>
                                 <p>Call center</p>
-                                <p>ORM</p>
+                                <p>CRM</p>
                                 <p>Portafolio de clientes</p>
                                 <p>Relaciones comerciales</p>
                                     
@@ -382,7 +446,7 @@
                     <div class="section-heading white mb-50">
                         <div class="line"></div>
                         <p>Consigue tu prestamo lo mas rapido posible</p>
-                        <h2>Conseguir prestamo</h2>
+                        <h2>Adquiere tu crédito</h2>
                     </div>
                     <h6>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem. Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sod ales. Maecenas sed magna tempor, efficitur maur is in, sollicitudin augue. Praesent pretium finibus quam.</h6>
                     <a href="#" class="btn credit-btn btn-2 box-shadow">Leer más</a>
