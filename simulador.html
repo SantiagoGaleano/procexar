@@ -311,11 +311,19 @@
             this.recursosCliente.value = new Intl.NumberFormat('es-CO').format(vInmueble - vFinanciado);
             rCliente  = parseInt(recursosCliente.value.replace(/\./g,""));
             console.log('hola',rCliente);
+            tasaMensual = tasaEA.value/100;
+            console.log('tasa mensaul', tasaMensual);
 
-            tasaMensual = (( Math.pow((1 + plazo.value/100),(1/12))-1));
+            tasaMensual = (( Math.pow((1 + tasaMensual),(1/12))-1));
             console.log('la tasa',tasaMensual);
-            this.canonSinIngresos = ((tasaMensual * (Math.pow(1+tasaMensual,plazo.value))) / (Math.pow(1 + tasaMensual,plazo.value)-1));
+            console.log('´rueba',vFinanciado);
+            cSinIngreso = vFinanciado *  ((tasaMensual * (Math.pow(1+tasaMensual,plazo.value))) / (Math.pow(1 + tasaMensual,plazo.value)-1));
             console.log('canon',canonSinIngresos);
+
+            primaMensual = (vFinanciado*0.17/1000);
+            console.log('prima mensual', primaMensual);
+
+            this.canonSinIngresos.value = new Intl.NumberFormat('es-CO').format(cSinIngreso);
 
 
 
