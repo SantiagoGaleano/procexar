@@ -203,11 +203,11 @@
             </div>
             <div class="modal-body">
                 <form>
-                   
+                   <h5>Datos Referido</h5>
                     <div class="form-group row">
-                      <label for="colFormLabel" class="col-sm-2 col-form-label">Código</label>
+                      <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="colFormLabel" placeholder="Código">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -217,7 +217,90 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Telefono</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Telefono">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tipo de crédito</label>
+                        <select style="margin-left: 14px;"  onchange="selectTasa()" class="custom-select col-sm-9" id="interesPrestamo" required>
+                            <option value="mensual" >Hipotecario</option>
+                            <option value="anual">Compra de cartera hipotecaria </option>
+                            <option value="anual"> Leasing </option>
+                            <option value="anual"> Remodelación </option>
+
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Valor</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Valor">
+                        </div>
+                    </div>
+
+                    <h5>Datos quien lo refiere</h5>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Codigo</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Codigo">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Telefono</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Telefono">
+                        </div>
+                    </div>
+                   
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viabilidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 style="text-align: center;" >Referidos</h4>
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                   
+                    <div class="form-group row">
+                      <label for="colFormLabel" class="col-sm-2 col-form-label">Código</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Código">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Cédula cliente</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="colFormLabel" placeholder="Cédula">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre cliente </label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
                         </div>
@@ -250,7 +333,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
 
 
     <!-- ##### Hero Area End ##### -->

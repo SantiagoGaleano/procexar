@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/simulador.css">
     <link rel="stylesheet" href="whatssap.css">
-    <script src="js/simulador.js"></script>
 
     <script>
         function calcular(){
@@ -130,56 +129,120 @@
 
 
 
-    <div class="container">
+    <div class="container containerSimulador" style="margin-top: 20px;">
+        
         <div class="row">
-            <div class="col-sm-6">
-                <img  class="imgHipotecario " src="img/casa.png" alt="">
-            </div>
-            <div class="col-sm-6">
-                <img  class="imgHipotecario " src="img/cash.png" alt="">
-            </div>
-        </div>
+            <div class="col-sm-12">
+                <div >
+                    <h3 style="text-align: center;">Simula tu crédito</h3>
+            
+                    <div>
+                                   
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Valor comercial inmueble</label>
+                        
+                            <div class="col-sm-7">
+                                <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="valorInmueble" name="valorInmueble" required >
+                            </div>
+                        </div>
 
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="containerSimulador">
-                    <h3 style="text-align: center;">Crédito Hipotecario</h3>
-            
-                    <div>
-                                   
+
                         <div class="form-group row">
-                            <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
-                        <div class="col-sm-7">
-                            <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
+                            <label  class="col-sm-4 col-form-label">Recursos propios del cliente </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="recursosCliente" name="recursosCliente" readonly  >
+                            </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Porcentaje de financiación </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="porcentajeFinanciacion" name="porcentajeFinanciacion" required >
                             </div>
-                            <p>Interés del prestamo</p>
-                            <div class="form-group row ">
-                                <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
-                                    <option value="mensual" >Mensual</option>
-                                    <option value="anual">Efectivo Anual</option>
-                                    
-                                </select>
-                                  
-                                 <div class="col-sm-7">
-                                    <input  type="text" class="form-control" id="tasa" required >
-                                  
-                                </div>
-                                <p>%</p>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">VR financiación</label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="vrFinanciacion" name="vrFinanciacion" readonly  >
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Opción compra </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="opcionCompra" name="opcionCompra" required >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Valor leasing </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="valorLeasing" name="valorLeasing"  readonly  >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Opción compra </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="opcionCompraRead" name="opcionCompraRead" readonly >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Plazo meses </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="plazo" name="plazo" required >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Tasa E.A </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="tasaEA" name="tasaEA" required >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Tasa M.V </label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="tasaMV" name="tasaMV"  readonly >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Valor canon (sin ingresos)</label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="canonSinIngresos" name="canonSinIngresos" readonly  >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-form-label">Valor canon (seguro vida + daños)</label>
+                        
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="canonConSeguro" name="canonConSeguro" readonly  >
+                            </div>
+                        </div>
+                            
+                           
             
-                            <div class="form-group row">
-                                <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
-                                <div class="col-sm-7">
-                                  <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
-                                </div>
-                            </div>
-                              <p> Número de meses: <span id="demo"></span></p>
-                             
-                            <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
+                           
+                            <div id="ingresosDemostrar" name="ingresosDemostrar" class="form-group row">
                                 <label  class="col-sm-4 col-form-label">Cuota calculada sin seguro aproximada simple</label>
                                 <div class="col-sm-7">
-                                  <span id="cuota"></span>
+                                  <span id="ingresosDemostrar"></span>
                                 </div>
                             </div>
             
@@ -194,77 +257,27 @@
               
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="containerSimulador">
-                    <h3 style="text-align: center;">Crédito Libranza</h3>
             
-                    <div>
-                                   
-                        <div class="form-group row">
-                            <label  class="col-sm-4 col-form-label">Ingrese el monto</label>
-                        <div class="col-sm-7">
-                            <input onkeyup="format(this)" onchange="format(this)"  type="text" class="form-control" id="monto" name="monto" required >
-                        </div>
-                            </div>
-                            <p>Interés del prestamo</p>
-                            <div class="form-group row ">
-                                <select  onchange="selectTasa()" class="custom-select col-sm-4" id="interesPrestamo" required>
-                                    <option value="mensual" >Mensual</option>
-                                    <option value="anual">Efectivo Anual</option>
-                                    
-                                </select>
-                                  
-                                 <div class="col-sm-7">
-                                    <input  type="text" class="form-control" id="tasa" required >
-                                  
-                                </div>
-                                <p>%</p>
-                            </div>
-            
-                            <div class="form-group row">
-                                <label  class="col-sm-4 col-form-label">Seleccione el numero de cuotas</label>
-                                <div class="col-sm-7">
-                                  <input type="range" min="1" max="360" value="180" class="slider" id="myRange">
-                                </div>
-                            </div>
-                              <p> Número de meses: <span id="demo"></span></p>
-                             
-                            <div id="cuotaMensual" name="cuotaMensual" class="form-group row">
-                                <label  class="col-sm-4 col-form-label">Cuota calculada sin seguro aproximada simple</label>
-                                <div class="col-sm-7">
-                                  <span id="cuota"></span>
-                                </div>
-                            </div>
-            
-                                                       
-                            <div class="form-group row">
-                              <div class="col-sm-10">
-                                <button onclick="myFunction()" class="btn btn-primary">Calcular</button>
-                              </div>
-                            </div>
-                        
-                    </div>
-              
-                </div>
-            </div>
         </div>
     </div>
 
     
 
       <script>
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        var tasa = document.getElementById("tasa");
-        var calcular = document.getElementById("calcular");
-        var montoo = document.getElementsByName("monto");
-        var valorCuota = document.getElementById("cuota");
+        var recursosCliente = document.getElementById("recursosCliente");
+        var porcentajeF = document.getElementById("porcentajeFinanciacion");
+        var vrFinanciacion = document.getElementById("vrFinanciacion");
+        var opcionCompra = document.getElementById("opcionCompra");
+        var opcionCompraRead = document.getElementById("opcionCompraRead");
 
-        output.innerHTML = slider.value;
-        var num;
-        slider.oninput = function() {
-          output.innerHTML = this.value;
-        }
+        var plazo = document.getElementById("plazo");
+        var tasaEA = document.getElementById("tasaEA");
+        var tasaMV = document.getElementById("tasaMV");
+        var canonSinIngresos = document.getElementById("canonSinIngresos");
+        var canonConSeguro = document.getElementById("canonConSeguro");
+        var valorInmueble = document.getElementById("valorInmueble");
+        var valorLeasing = document.getElementById("valorLeasing");
+
 
         function selectTasa() {
             var tipoTasa = document.getElementById("interesPrestamo").value;
@@ -285,41 +298,29 @@
 
         
         function myFunction() {
-            
-            var monto = document.getElementById("monto");
-            console.log(monto);
 
-            if (selectTasa() == 'mensual'){
-            console.log('prueba select tas');
+            vInmueble = parseInt(num.replace(/\./g,""))
+            this.vrFinanciacion.value= new Intl.NumberFormat('es-CO').format(vInmueble * (porcentajeF.value/100));
+            vFinanciado = parseInt(vrFinanciacion.value.replace(/\./g,""));
+            this.valorLeasing.value = new Intl.NumberFormat('es-CO').format(vFinanciado);
+            vLeasing = parseInt(valorLeasing.value.replace(/\./g,""));
+            this.opcionCompraRead.value= new Intl.NumberFormat('es-CO').format(opcionCompra.value * (vLeasing/100));
+            this.tasaMV.value = ((Math.pow(1+ (this.tasaEA.value/100),(0.08333333)))-1) *100;
 
-            tasaMensual =  tasa.value / 100;
-            cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
-            console.log('sosos' + cuotaMensual);
-                        
-            cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
+           
+            this.recursosCliente.value = new Intl.NumberFormat('es-CO').format(vInmueble - vFinanciado);
+            rCliente  = parseInt(recursosCliente.value.replace(/\./g,""));
+            console.log('hola',rCliente);
 
-            } else if(selectTasa() == 'anual'){
-                tasaMensual = (( Math.pow((1 + tasa.value/100),(1/12))-1));
-                console.log(tasaMensual);
-                cuotaMensual = parseInt(num.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,slider.value))) / (Math.pow(1 + tasaMensual,slider.value)-1));
-                cuota.innerHTML = new Intl.NumberFormat('es-CO').format(this.cuotaMensual);
-
-            }
+            tasaMensual = (( Math.pow((1 + plazo.value/100),(1/12))-1));
+            console.log('la tasa',tasaMensual);
+            this.canonSinIngresos = ((tasaMensual * (Math.pow(1+tasaMensual,plazo.value))) / (Math.pow(1 + tasaMensual,plazo.value)-1));
+            console.log('canon',canonSinIngresos);
 
 
-            if(tasa.value.length==0 || monto.value.length==0){
-                alert('Falta información');
 
-            }
-            
-            if(isNaN(parseInt(tasa.value))){
-                alert('Los campos deben ser numericos');
-            }
-            
-            console.log('la tasa es '+ tasa.value);
 
-            
-            
+
         }
 
        
