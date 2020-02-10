@@ -230,18 +230,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label  class="col-sm-4 col-form-label">Valor canon (seguro vida + daños)</label>
                         
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="canonConSeguro" name="canonConSeguro" readonly  >
-                            </div>
-                        </div>
-                            
                            
             
                            
-                            <div id="ingresosDemostrar" name="ingresosDemostrar" class="form-group row">
+                            <div id="" name="" class="form-group row">
                                 <label  class="col-sm-4 col-form-label">Cuota calculada sin seguro aproximada simple</label>
                                 <div class="col-sm-7">
                                   <span id="ingresosDemostrar"></span>
@@ -279,6 +272,7 @@
         var canonConSeguro = document.getElementById("canonConSeguro");
         var valorInmueble = document.getElementById("valorInmueble");
         var valorLeasing = document.getElementById("valorLeasing");
+        var ingresos = document.getElementById("ingresosDemostrar");
 
 
         function selectTasa() {
@@ -326,6 +320,7 @@
             console.log('prima mensual', primaMensual);
 
             this.canonSinIngresos.value = new Intl.NumberFormat('es-CO').format(cSinIngreso);
+            ingresos.innerHTML =  new Intl.NumberFormat('es-CO').format(cSinIngreso/0.3);
 
 
 
