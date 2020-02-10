@@ -337,7 +337,7 @@
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Tipo</label>
-                        <select style="margin-left: 14px;"  onchange="selectTasa()" class="custom-select col-sm-9" id="tipoCredito" required>
+                        <select style="margin-left: 14px;"  onchange="selectTIpo()" class="custom-select col-sm-9" id="tipoCredito" required>
                             <option value="mensual" >Casa</option>
                             <option value="anual"> Apartamento </option>
                             <option value="anual"> otro </option>
@@ -354,7 +354,7 @@
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Valor de inmueble</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="valorInmueble" placeholder="valor Inmueble">
+                          <input onkeyup="format(this)" onchange="format(this)" type="text" class="form-control" id="valorInmueble" placeholder="valor Inmueble">
                         </div>
                     </div>
 
@@ -400,6 +400,18 @@
         var apellido = document.getElementById("apellido");
         var correoElectronico = document.getElementById("email");
         var edad = document.getElementById("edad");
+        var valorInmueble = document.getElementById("valorInmueble");
+        var tasaAnual = document.getElementById("tasaAnual");
+        var plazo = document.getElementById("plazo");
+
+        function format(input){
+            num = input.value.replace(/\./g,'');
+            if(!isNaN(num)){
+                num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                num = num.split('').reverse().join('').replace(/^[\.]/,'');
+                input.value = num;
+            }
+        }
 
         function selectGenero() {
             var genero = document.getElementById("genero").value;
@@ -410,19 +422,33 @@
 
         function selectCredito() {
             var destinoCredito= document.getElementById("destinoCredito").value;
-            console.log('el genero ess', destinoCredito);
+            console.log('el destino del credito es', destinoCredito);
             return destinoCredito;
          
         }
         
+        function selectTIpo(){
+            var tipo= document.getElementById("tipoCredito").value;
+            console.log('el tipo es', tipo);
+            return tipo;
+        }
 
         function calcularViabilidad(){
             console.log('hola',nombre.value);
             console.log('hola',apellido.value);
             console.log('hola',correoElectronico.value);
             console.log('hola',edad.value);
+            console.log('hola',valorInmueble.value);
+            console.log('hola',tasaAnual.value);
+            console.log('hola',plazo.value);
+            
             selectGenero();
             selectCredito();
+            selectTIpo();
+
+            if(plazo.value < 60 || plazo.value > 360){
+                alert('cambien el plazo');
+            }
         }
     
     </script>
