@@ -17,6 +17,8 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="whatssap.css">
+    <script src=""></script>
+    <script src="dist/jspdf.min.js"></script>
 
 </head>
 
@@ -494,12 +496,23 @@
             porcentajeCuota = dCuota * 0.3; 
             console.log('cuota' + porcentajeCuota);
 
+
             if(valorCuota > porcentajeCuota) {
 
                 dictamen.innerHTML =  'Puedes consolidar ingresos para que sea aprobado';
             }
             else{
                 dictamen.innerHTML =  'Viable';
+                var doc = new jsPDF();
+                doc.text(20, 20, 'Nombre ' + nombre.value);
+                doc.text(20, 30, 'Apellido ' + apellido.value);
+                doc.text(20, 40, 'Email ' + correoElectronico.value);
+                doc.text(20, 50, 'valor inmueble ' + valorInmueble.value);
+                doc.text(20, 60, 'tasa anual ' + tasaAnual.value);
+                doc.text(20, 70, 'plazo en meses ' + plazo.value);
+                doc.text(20, 80, 'dictamen ' + 'viable');
+
+                doc.save('Test.pdf');
             }
             }
         }
