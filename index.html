@@ -17,6 +17,8 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="whatssap.css">
+    <script src=""></script>
+    <script src="dist/jspdf.min.js"></script>
 
 </head>
 
@@ -115,7 +117,7 @@
                                 <h2 data-animation="fadeInUp" data-delay="300ms"> Obten tu<span> Pre Aprobación</span> </h4>
                                 <p data-animation="fadeInUp" data-delay="500ms">Rápidamente te brindamos las herramientas necesarias para tomar la mejor decisión.</p>
 
-                                <a href="#" class="btn credit-btn mt-50" data-toggle="modal" data-target="#proceso" data-animation="fadeInUp" data-delay="700ms">Ver mas</a>
+                                <a href="#" class="btn credit-btn mt-50" data-toggle="modal" data-target="#viabilidad" data-animation="fadeInUp" data-delay="700ms">Ver mas</a>
                             </div>
                         </div>
                     </div>
@@ -157,7 +159,7 @@
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Vivienda</h6>
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Buscas  <span>vivienda</span> </h2>
                                 <p data-animation="fadeInUp" data-delay="500ms">Te presentamos multples opciones en muebles usados.</p>
-                                <a href="#" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Leer más</a>
+                                <a href="post.html" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Leer más</a>
                             </div>
                         </div>
                     </div>
@@ -274,6 +276,251 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="viabilidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 style="text-align: center;" >Viabilidad</h4>
+              
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                   <h5>Información Personal</h5>
+                    <div class="form-group row">
+                      <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Apellido</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Correo Electronico</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="email" placeholder="Correo electronico">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Edad</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="edad" placeholder="Edad">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Genero</label>
+                        <select style="margin-left: 14px;"  onchange="selectGenero()" class="custom-select col-sm-9" id="genero" required>
+                            <option value="masculino" >Masculino</option>
+                            <option value="femenino"> Femenino </option>
+                      
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Destino Credito</label>
+                        <select style="margin-left: 14px;"  onchange="selectCredito()" class="custom-select col-sm-9" id="destinoCredito" required>
+                            <option value="vivi" >Vivi</option>
+                            <option value="nueva"> Nueva </option>
+                            <option value="usada"> Usada </option>
+                      
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tipo</label>
+                        <select style="margin-left: 14px;"  onchange="selectTIpo()" class="custom-select col-sm-9" id="tipoCredito" required>
+                            <option value="mensual" >Casa</option>
+                            <option value="anual"> Apartamento </option>
+                            <option value="anual"> otro </option>
+                      
+                        </select>
+                    </div>
+
+                    
+
+                   
+
+                    <h5>Datos Crédito</h5>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Valor de inmueble</label>
+                        <div class="col-sm-10">
+                          <input onkeyup="format(this)" onchange="format(this)" type="text" class="form-control" id="valorInmueble" placeholder="valor Inmueble">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Ingresos propios</label>
+                        <div class="col-sm-10">
+                          <input onkeyup="format(this)" onchange="format(this)" type="text" class="form-control" id="ingresosPropios" placeholder="Ingresos propios">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tasa de interes anual</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="tasaAnual" placeholder="Tasa Anual">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Plazo en meses</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="plazo" placeholder="plazo">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Valor crédito </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="valorCredito"  readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tasa de interes MV</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="tasaMV"  readonly>
+                        </div>
+                    </div>
+
+                    <div id="" name="" class="form-group row">
+                        <label  class="col-sm-4 col-form-label">Dictamen</label>
+                        <div class="col-sm-7">
+                          <span id="dictamen"></span>
+                        </div>
+                    </div>
+                   
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="calcularViabilidad()">Enviar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        var nombre = document.getElementById("nombre");
+        var apellido = document.getElementById("apellido");
+        var correoElectronico = document.getElementById("email");
+        var edad = document.getElementById("edad");
+        var valorInmueble = document.getElementById("valorInmueble");
+        var tasaAnual = document.getElementById("tasaAnual");
+        var plazo = document.getElementById("plazo");
+        var tasaMV = document.getElementById("tasaMV");
+        var ingresosPropios = document.getElementById("ingresosPropios");
+        var valorCredito = document.getElementById("valorCredito");
+        var dictamen = document.getElementById("dictamen");
+
+
+        function format(input){
+            num = input.value.replace(/\./g,'');
+            if(!isNaN(num)){
+                num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                num = num.split('').reverse().join('').replace(/^[\.]/,'');
+                input.value = num;
+            }
+        }
+
+        function selectGenero() {
+            var genero = document.getElementById("genero").value;
+            console.log('el genero es', genero);
+            return genero;
+         
+        }
+
+        function selectCredito() {
+            var destinoCredito= document.getElementById("destinoCredito").value;
+            console.log('el destino del credito es', destinoCredito);
+            return destinoCredito;
+         
+        }
+        
+        function selectTIpo(){
+            var tipo= document.getElementById("tipoCredito").value;
+            console.log('el tipo es', tipo);
+            return tipo;
+        }
+
+        function calcularViabilidad(){
+            console.log('hola',nombre.value);
+            console.log('hola',apellido.value);
+            console.log('hola',correoElectronico.value);
+            console.log('hola',edad.value);
+            console.log('hola',valorInmueble.value);
+            console.log('hola',tasaAnual.value);
+            console.log('hola',plazo.value);
+            
+            selectGenero();
+            selectCredito();
+            selectTIpo();
+
+            if(plazo.value < 60 || plazo.value > 360 ){
+                alert('cambien el plazo');
+            } else if(edad.value <25 || edad.value > 69){
+                alert('edad invalida');
+            } else {
+
+            
+
+
+            this.tasaMV.value = ((Math.pow(1+ (this.tasaAnual.value/100),(0.08333333)))-1) *100;
+
+            tasaMensual = (( Math.pow((1 + tasaAnual.value/100),(1/12))-1));
+            console.log('la tasa mensual es', tasaMensual);
+           
+            
+            console.log(tasaMensual);
+            
+            rValorInmueble =parseInt(valorInmueble.value.replace(/\./g,""));
+            this.valorCredito.value =  new Intl.NumberFormat('es-CO').format(rValorInmueble * 0.7); 
+            console.log('valor credito es',valorCredito.value, tasaMensual);
+
+            valorCuota = parseInt(valorCredito.value.replace(/\./g,"")) * ((tasaMensual * (Math.pow(1+tasaMensual,plazo.value))) / (Math.pow(1 + tasaMensual,plazo.value)-1));
+            console.log('valor cuota es ', valorCuota);
+
+
+            dCuota = parseInt(ingresosPropios.value.replace(/\./g,""));
+            porcentajeCuota = dCuota * 0.3; 
+            console.log('cuota' + porcentajeCuota);
+
+
+            if(valorCuota > porcentajeCuota) {
+
+                dictamen.innerHTML =  'Puedes consolidar ingresos para que sea aprobado';
+            }
+            else{
+                dictamen.innerHTML =  'Viable';
+                var doc = new jsPDF();
+                doc.text(20, 20, 'Nombre ' + nombre.value);
+                doc.text(20, 30, 'Apellido ' + apellido.value);
+                doc.text(20, 40, 'Email ' + correoElectronico.value);
+                doc.text(20, 50, 'valor inmueble ' + valorInmueble.value);
+                doc.text(20, 60, 'tasa anual ' + tasaAnual.value);
+                doc.text(20, 70, 'plazo en meses ' + plazo.value);
+                doc.text(20, 80, 'dictamen ' + 'viable');
+
+                doc.save('Test.pdf');
+            }
+            }
+        }
+    
+    </script>
+    
+
+
     <div class="modal fade" id="viabilidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -335,6 +582,7 @@
         </div>
     </div>
 
+    
 
     <!-- ##### Hero Area End ##### -->
     
