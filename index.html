@@ -317,12 +317,29 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Celular</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="celular " placeholder="Número de celular">
+                        </div>
+                    </div>
+
+
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Genero</label>
                         <select style="margin-left: 14px;"  onchange="selectGenero()" class="custom-select col-sm-9" id="genero" required>
                             <option value="masculino" >Masculino</option>
                             <option value="femenino"> Femenino </option>
+                      
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">¿Actividad laboral principal?</label>
+                        <select style="margin-left: 14px;"  onchange="selectLaboral()" class="custom-select col-sm-9" id="laboral" required>
+                            <option value="empleado" >Empleado</option>
+                            <option value="Independiente"> Independiente </option>
                       
                         </select>
                     </div>
@@ -367,12 +384,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tasa de interes anual</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="tasaAnual" placeholder="Tasa Anual">
-                        </div>
-                    </div>
+                  
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Plazo en meses</label>
@@ -388,13 +400,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tasa de interes MV</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="tasaMV"  readonly>
-                        </div>
-                    </div>
-
+                    
                     <div id="" name="" class="form-group row">
                         <label  class="col-sm-4 col-form-label">Dictamen</label>
                         <div class="col-sm-7">
@@ -406,6 +412,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" onclick="calcularViabilidad()">Enviar</button>
+              <button onclick="prueba()"></button>
             </div>
           </div>
         </div>
@@ -419,7 +426,7 @@
         var valorInmueble = document.getElementById("valorInmueble");
         var tasaAnual = document.getElementById("tasaAnual");
         var plazo = document.getElementById("plazo");
-        var tasaMV = document.getElementById("tasaMV");
+        
         var ingresosPropios = document.getElementById("ingresosPropios");
         var valorCredito = document.getElementById("valorCredito");
         var dictamen = document.getElementById("dictamen");
@@ -454,13 +461,19 @@
             return tipo;
         }
 
+        function selectLaboral(){
+            var laboral= document.getElementById("laboral").value;
+            console.log('el tipo es', tipo);
+            return tipo;
+        }
+
         function calcularViabilidad(){
             console.log('hola',nombre.value);
             console.log('hola',apellido.value);
             console.log('hola',correoElectronico.value);
             console.log('hola',edad.value);
             console.log('hola',valorInmueble.value);
-            console.log('hola',tasaAnual.value);
+           
             console.log('hola',plazo.value);
             
             selectGenero();
@@ -476,9 +489,9 @@
             
 
 
-            this.tasaMV.value = ((Math.pow(1+ (this.tasaAnual.value/100),(0.08333333)))-1) *100;
+             this.tasaMV = ((Math.pow(1+ (10.5/100),(0.08333333)))-1) *100;
 
-            tasaMensual = (( Math.pow((1 + tasaAnual.value/100),(1/12))-1));
+            tasaMensual = (( Math.pow((1 + 10.5/100),(1/12))-1));
             console.log('la tasa mensual es', tasaMensual);
            
             
@@ -499,7 +512,7 @@
 
             if(valorCuota > porcentajeCuota) {
 
-                dictamen.innerHTML =  'Puedes consolidar ingresos para que sea aprobado';
+                dictamen.innerHTML =  'Puedes consolidar ingresos para que sea viable';
             }
             else{
                 dictamen.innerHTML =  'Viable';
@@ -508,13 +521,54 @@
                 doc.text(20, 30, 'Apellido ' + apellido.value);
                 doc.text(20, 40, 'Email ' + correoElectronico.value);
                 doc.text(20, 50, 'valor inmueble ' + valorInmueble.value);
-                doc.text(20, 60, 'tasa anual ' + tasaAnual.value);
+                doc.text(20, 60, 'tasa anual ' + 10.5);
                 doc.text(20, 70, 'plazo en meses ' + plazo.value);
                 doc.text(20, 80, 'dictamen ' + 'viable');
 
                 doc.save('Test.pdf');
             }
             }
+        }
+
+        function prueba(){
+            var doc = new jsPDF();
+
+            var imgdata = new Image();
+            var fecha = new Date();
+            imgdata.src = 'img/core-img/procexar2.png';
+           
+            doc.addImage(imgdata , 'PNG', 10, 20, 60, 20);
+               
+            doc.text(10, 60, 'Fecha: ' +  fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
+
+            doc.setFontSize(12);
+            doc.text(10, 80, 'Señor(a): ' + nombre.value + apellido.value);
+
+            doc.setFontSize(12);
+            doc.text(10,100, 'De acuerdo a su solicitud le informamos las características de la oferta diseñada para usted');
+            
+            doc.setFontSize(14);
+            doc.text(10,115,'Crédito VIVIENDA');
+
+            doc.setFontSize(12);
+            doc.text(10,125,'Línea destinada para la compra de vivienda nueva o usada, aplica para personas, naturales,' + '\nempleadas o independientes');
+
+            doc.text(10,145, 'MONTO: '  );
+            doc.text(10,155, 'PLAZO: '  );
+            doc.text(10,165, 'VALOR APROXIMADA CUOTA: '  );
+
+            doc.text(10,175, 'Beneficios');
+            doc.text(10,185, '- Desembolso ágil y se realiza a quien lo solicite.' + 
+            '\n- No existen sanciones por prepagos totales o parciales' + 
+            '\n- Proceso de desembolso ágil 25 días si tienes tus documentos en regla' + 
+            '\n- Cuenta AFC con los beneficios de Ley' + 
+            '\n- Domiciliación del pago de la cuota del crédito Hipotecario a través de una cuenta AFC o cuenta' + '\n de ahorros, para pago automático' + 
+            '\n- Approbation en firme ' + 
+            '\n' +
+            '\nCaracteristicas' );
+            
+
+            doc.save('Test.pdf');
         }
     
     </script>
@@ -1114,8 +1168,8 @@
                         <p>Consigue tu prestamo lo mas rapido posible</p>
                         <h2>Adquiere tu crédito</h2>
                     </div>
-                    <h6>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem. Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sod ales. Maecenas sed magna tempor, efficitur maur is in, sollicitudin augue. Praesent pretium finibus quam.</h6>
-                    <a href="#" class="btn credit-btn btn-2 box-shadow">Leer más</a>
+                    <h6>Oferta de servicio diferencial  diseñada especialmente para atraer personas únicas como usted.</h6>
+                    
                 </div>
             </div>
             <!-- Special Feature Thumbnail -->
