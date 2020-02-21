@@ -517,59 +517,63 @@
             else{
                 dictamen.innerHTML =  'Viable';
                 var doc = new jsPDF();
-                doc.text(20, 20, 'Nombre ' + nombre.value);
-                doc.text(20, 30, 'Apellido ' + apellido.value);
-                doc.text(20, 40, 'Email ' + correoElectronico.value);
-                doc.text(20, 50, 'valor inmueble ' + valorInmueble.value);
-                doc.text(20, 60, 'tasa anual ' + 10.5);
-                doc.text(20, 70, 'plazo en meses ' + plazo.value);
-                doc.text(20, 80, 'dictamen ' + 'viable');
+                var imgdata = new Image();
+                var fecha = new Date();
+                imgdata.src = 'img/core-img/procexar2.png';
+                doc.addImage(imgdata , 'PNG', 10, 20, 60, 20);
+   
+                doc.text(10, 60, 'Fecha: ' +  fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
+                doc.setFontSize(12);
+                doc.text(10, 80, 'Señor(a): ' + nombre.value + ' ' + apellido.value);
+                doc.setFontSize(12);
+                doc.text(10,100, 'De acuerdo a su solicitud le informamos las características de la oferta diseñada para usted');
+                doc.setFontSize(14);
+                doc.text(10,115,'Crédito VIVIENDA');
 
-                doc.save('Test.pdf');
+                doc.setFontSize(12);
+                doc.text(10,125,'Línea destinada para la compra de vivienda nueva o usada, aplica para personas, naturales,' + '\nempleadas o independientes');
+                doc.text(10,145, 'MONTO: '  );
+                doc.text(10,155, 'PLAZO: '  );
+                doc.text(10,165, 'VALOR APROXIMADA CUOTA: '  );
+
+                doc.text(10,175, 'Beneficios');
+
+                
+                doc.text(10,185, '- Desembolso ágil y se realiza a quien lo solicite.' + 
+                '\n- No existen sanciones por prepagos totales o parciales' + 
+                '\n- Proceso de desembolso ágil 25 días si tienes tus documentos en regla' + 
+                '\n- Cuenta AFC con los beneficios de Ley' + 
+                '\n- Domiciliación del pago de la cuota del crédito Hipotecario a través de una cuenta AFC o cuenta' + '\n de ahorros, para pago automático' + 
+                '\n- Approbation en firme ' + 
+                '\n' +
+                '\nCaracteristicas' + 
+                '\n' + '\n' +
+                '- Tasa fija en pesos' + 
+                '\n- Plazo de 5 a 20 años' +
+                '\n- Financiación hasta el 70% del valor del inmueble' + 
+                '\n- Montos desde $30 millones' + 
+                '\n- Monto máximo: De acuerdo a la capacidad de pago del cliente' +
+                '\n- Seguros: Incendio, terremoto y vida deudor' );
+                
+                doc.addPage();
+                doc.text(10,20,'Requisitos' + '\n' +
+                '\nEmpleados' + '\n' +
+                '\n- Fotocopia del documento de identidad ampliada al 150%' +
+                '\n- Fotocopia certificada de ingresos y retenciones. ' +
+                '\n- Certificado Laboral original con vigencia no mayor a 30 días, indicando cargo, salario básico' + '\n' + 
+                'tiempo de servicio y tipo de contrato. ' +
+                '\n' + '\n' +
+                '\nPensionados' + '\n' + '\n' +
+                '- Fotocopia del documento de identidad ampliada al 150%.' + 
+                '\n- Fotocopia certificada de ingresos y retenciones o copia de la resolución de pensión.' + 
+                '\n- Fotocopia del último comprobante de pago de pensión.' );
+                doc.save('Viabilidad.pdf');
+
             }
             }
         }
 
-        function prueba(){
-            var doc = new jsPDF();
-
-            var imgdata = new Image();
-            var fecha = new Date();
-            imgdata.src = 'img/core-img/procexar2.png';
-           
-            doc.addImage(imgdata , 'PNG', 10, 20, 60, 20);
-               
-            doc.text(10, 60, 'Fecha: ' +  fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-
-            doc.setFontSize(12);
-            doc.text(10, 80, 'Señor(a): ' + nombre.value + apellido.value);
-
-            doc.setFontSize(12);
-            doc.text(10,100, 'De acuerdo a su solicitud le informamos las características de la oferta diseñada para usted');
-            
-            doc.setFontSize(14);
-            doc.text(10,115,'Crédito VIVIENDA');
-
-            doc.setFontSize(12);
-            doc.text(10,125,'Línea destinada para la compra de vivienda nueva o usada, aplica para personas, naturales,' + '\nempleadas o independientes');
-
-            doc.text(10,145, 'MONTO: '  );
-            doc.text(10,155, 'PLAZO: '  );
-            doc.text(10,165, 'VALOR APROXIMADA CUOTA: '  );
-
-            doc.text(10,175, 'Beneficios');
-            doc.text(10,185, '- Desembolso ágil y se realiza a quien lo solicite.' + 
-            '\n- No existen sanciones por prepagos totales o parciales' + 
-            '\n- Proceso de desembolso ágil 25 días si tienes tus documentos en regla' + 
-            '\n- Cuenta AFC con los beneficios de Ley' + 
-            '\n- Domiciliación del pago de la cuota del crédito Hipotecario a través de una cuenta AFC o cuenta' + '\n de ahorros, para pago automático' + 
-            '\n- Approbation en firme ' + 
-            '\n' +
-            '\nCaracteristicas' );
-            
-
-            doc.save('Test.pdf');
-        }
+        
     
     </script>
     
@@ -644,73 +648,11 @@
     <!---->
     
     <!-- ##### Call To Action Start ###### -->
-    <section style="margin-top: 30px" class="cta-area d-flex flex-wrap">
-        <!-- Cta Thumbnail -->
-        <div class="cta-thumbnail bg-img jarallax" style="background-image: url(img/bg-img/5.jpg);"></div>
-
-        <!-- Cta Content -->
-        <div class="cta-content">
-            <!-- Section Heading -->
-            <div class="section-heading white">
-                <div class="line"></div>
-                <p>Texto</p>
-                <h2>Texto</h2>
-            </div>
-            <h6>texto</h6>
-            <div class="d-flex flex-wrap mt-50">
-                <!-- Single Skills Area -->
-                <div class="single-skils-area mb-70 mr-5">
-                    <div id="circle" class="circle" data-value="0.90">
-                        <div class="skills-text">
-                            <span>90%</span>
-                        </div>
-                    </div>
-                    <p>Porcentaje 1</p>
-                </div>
-
-                <!-- Single Skills Area -->
-                <div class="single-skils-area mb-70 mr-5">
-                    <div id="circle2" class="circle" data-value="0.75">
-                        <div class="skills-text">
-                            <span>75%</span>
-                        </div>
-                    </div>
-                    <p>Porcentaje 2</p>
-                </div>
-
-                <!-- Single Skills Area -->
-                <div class="single-skils-area mb-70">
-                    <div id="circle3" class="circle" data-value="0.97">
-                        <div class="skills-text">
-                            <span>97%</span>
-                        </div>
-                    </div>
-                    <p>Porcentaje 3</p>
-                </div>
-            </div>
-            <a href="#" class="btn credit-btn box-shadow btn-2">Leer más</a>
-        </div>
-    </section>
+    
     <!-- ##### Call To Action End ###### -->
 
     <!-- ##### Call To Action Start ###### -->
-    <section class="cta-2-area wow fadeInUp" data-wow-delay="100ms">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Cta Content -->
-                    <div class="cta-content d-flex flex-wrap align-items-center justify-content-between">
-                        <div class="cta-text">
-                            <h4>Necesitas alguna accesoria? ponte en contacto con nosotros.</h4>
-                        </div>
-                        <div class="cta-btn">
-                            <a href="#" class="btn credit-btn box-shadow">Contactanos</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     <!-- ##### Call To Action End ###### -->
 
     <!-- ##### Services Area Start ###### -->
