@@ -204,34 +204,34 @@
               </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="enviarReferido.php" method="post" >
                    <h5>Datos Referido</h5>
                     <div class="form-group row">
                       <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
+                        <input type="text" name="nombreReferido" class="form-control" id="nombreReferido" placeholder="Nombre">
                       </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Cédula</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Cédula">
+                          <input type="text" name="cedulaReferido" class="form-control" id="cedulaReferido" placeholder="Cédula">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Telefono</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Telefono">
+                          <input type="text" name="telefonoReferido" class="form-control" id="telefonoReferido" placeholder="Telefono">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Tipo de crédito</label>
-                        <select style="margin-left: 14px;"  onchange="selectTasa()" class="custom-select col-sm-9" id="interesPrestamo" required>
-                            <option value="mensual" >Hipotecario</option>
-                            <option value="anual">Compra de cartera hipotecaria </option>
-                            <option value="anual"> Leasing </option>
-                            <option value="anual"> Remodelación </option>
+                        <select style="margin-left: 14px;" id="creditoReferido" name="creditoReferido"  onchange="selectTasa()" class="custom-select col-sm-9" id="interesPrestamo" required>
+                            <option value="hipotecario" >Hipotecario</option>
+                            <option value="cartera hipotecaria">Compra de cartera hipotecaria </option>
+                            <option value="Leasing"> Leasing </option>
+                            <option value="Remodelacion"> Remodelación </option>
 
                             
                         </select>
@@ -240,7 +240,7 @@
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Valor</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Valor">
+                          <input type="text" class="form-control" name="valorReferido" id="valorReferido" placeholder="Valor">
                         </div>
                     </div>
 
@@ -249,28 +249,28 @@
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Codigo</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Codigo">
+                          <input type="text" class="form-control"  id="codigo"  name="codigo" placeholder="Codigo">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Nombre">
+                          <input type="text" class="form-control" id="nombreRefiere" name="nombreRefiere" placeholder="Nombre">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Telefono</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="colFormLabel" placeholder="Telefono">
+                          <input type="text" class="form-control" name="telefonoRefiere" id="telefonoRefiere" placeholder="Telefono">
                         </div>
                     </div>
-                   
+                    <button type="submit" class="btn btn-primary">Enviar</button>
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Enviar</button>
+             
             </div>
           </div>
         </div>

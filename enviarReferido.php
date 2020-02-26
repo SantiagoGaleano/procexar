@@ -1,11 +1,17 @@
 <?php
 
 
-$nombre = $_POST["name"];
-$email = $_POST["email"];
-$mensaje = $_POST["message"];
+$nombre = $_POST["nombreReferido"];
+$cedula = $_POST["cedulaReferido"];
+$telefono = $_POST["telefonoReferido"];
+$creditoReferido = $_POST["creditoReferido"];
+$valorReferido = $_POST["valorReferido"];
+$codigo = $_POST["codigo"];
+$nombreRefiere = $_POST["nombreRefiere"];
+$telefonoRefiere = $_POST["telefonoRefiere"];
 
-$contenido = "Nombre: " . $nombre . "<br>Correo: " . $email . "<br>Mensaje: ". $mensaje;
+
+$contenido = "Datos Referidos" . "<br>Nombre: " . $nombre . "<br>Cedula: " . $cedula . "<br>Telefono: ". $telefono . "<br>Tipo de Credito: ". $creditoReferido . "<br>Valor: ". $valorReferido . "<br>DATOS QUIEN LO REFIERE" . "<br>Codigo: " . $codigo . "<br>Nombre: " . $nombreRefiere . "<br>Telefono: " . $telefonoRefiere  ;
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PhpMailer\PHPMailer\PHPMailer;
@@ -40,7 +46,7 @@ try {
     
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Contacto';
+    $mail->Subject = 'Referidos';
     $mail->Body    = $contenido;
 
     $mail->send();
