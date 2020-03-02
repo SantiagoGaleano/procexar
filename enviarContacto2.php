@@ -27,8 +27,8 @@ try {
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'procexar.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'info@procexar.com';                     // SMTP username
-    $mail->Password   = 'procexar2020';                               // SMTP password
+    $mail->Username   = 'contactanos@procexar.com';                     // SMTP username
+    $mail->Password   = 'Contactanos2020';                               // SMTP password
     $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 465;                                    // TCP port to connect to
 
